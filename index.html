@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FurniBLOC (Dummy)</title>
+  <meta name="description" content="Website dummy bergaya FurniBLOC: furnitur, 3D & AR, showroom.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip" href="#main">Lewati ke konten</a>
+
+  <header class="header" id="top">
+    <div class="container header__inner">
+      <a class="logo" href="#top" aria-label="FurniBLOC beranda">
+        <svg width="28" height="28" viewBox="0 0 28 28" aria-hidden="true">
+          <rect x="2" y="2" width="24" height="24" rx="7" fill="currentColor"/>
+          <path d="M9 9h10v3H12v2h6v3h-6v3H9z" fill="#fff"/>
+        </svg>
+        <span>Furni<b>BLOC</b></span>
+      </a>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Buka menu">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="nav" id="nav" aria-label="Navigasi utama">
+        <a href="#katalog">Katalog</a>
+        <a href="#viewer">3D &amp; AR</a>
+        <a href="#cara-ar">Cara pakai AR</a>
+        <a href="#faq">FAQ</a>
+        <a href="#showroom">Showroom</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="container hero__inner">
+        <div class="hero__text">
+          <p class="eyebrow">Furniture · Home Decoration · Craft</p>
+          <h1>Furnitur pilihan, lihat dulu di ruanganmu.</h1>
+          <p class="lead">Ini adalah halaman dummy. Jelajahi tampilan 3D, coba AR lewat HP, lalu tanya langsung lewat WhatsApp.</p>
+          <div class="actions">
+            <a class="btn btn--primary" href="#viewer">Coba 3D &amp; AR</a>
+            <a class="btn btn--ghost" href="#showroom">Kunjungi showroom</a>
+          </div>
+        </div>
+        <div class="hero__art" aria-hidden="true">
+          <div class="soft-card art-block">
+            <div class="art-cube"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KATALOG (kosong) -->
+    <section class="section" id="katalog">
+      <div class="container">
+        <h2>Katalog</h2>
+        <p class="muted">Pilih kategori. Produk belum dimasukkan pada versi dummy ini.</p>
+        <div class="chips" role="tablist" aria-label="Kategori">
+          <button class="chip is-active" data-cat="all" role="tab" aria-selected="true">Semua</button>
+          <button class="chip" data-cat="Furniture" role="tab" aria-selected="false">Furniture</button>
+          <button class="chip" data-cat="Home Decoration" role="tab" aria-selected="false">Home Decoration</button>
+          <button class="chip" data-cat="Craft" role="tab" aria-selected="false">Craft</button>
+        </div>
+        <div class="soft-card empty" id="catalog-empty">
+          <p id="catalog-msg">Belum ada produk untuk ditampilkan.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3D & AR -->
+    <section class="section section--alt" id="viewer">
+      <div class="container">
+        <h2>Tampilan 3D &amp; AR</h2>
+        <p class="muted">Demo tampilan: geser untuk memutar. Model asli dimuat dari R2 pada versi produksi.</p>
+
+        <div class="tabs" role="tablist">
+          <button class="tab is-active" role="tab" data-tab="photo" aria-selected="true">Foto</button>
+          <button class="tab" role="tab" data-tab="3d" aria-selected="false">3D &amp; AR</button>
+          <button class="tab" role="tab" data-tab="video" aria-selected="false">Video</button>
+        </div>
+
+        <div class="soft-card stage" id="stage">
+          <div class="pane is-active" data-pane="photo">
+            <div class="ph">Placeholder foto</div>
+          </div>
+          <div class="pane" data-pane="3d">
+            <div class="model-picker" id="model-picker" role="group" aria-label="Pilih model" hidden></div>
+            <model-viewer id="mv" class="mv" alt="Model 3D"
+              camera-controls touch-action="pan-y" auto-rotate shadow-intensity="1"
+              environment-image="neutral" exposure="1"
+              ar ar-modes="webxr scene-viewer quick-look" ar-placement="floor" ar-scale="fixed"></model-viewer>
+            <!-- Cadangan bila model gagal dimuat -->
+            <div class="scene" id="scene" hidden aria-label="Demo objek 3D, geser untuk memutar">
+              <div class="cube" id="cube">
+                <i class="f front"></i><i class="f back"></i><i class="f right"></i>
+                <i class="f left"></i><i class="f top"></i><i class="f bottom"></i>
+              </div>
+            </div>
+            <button class="btn btn--primary ar-btn" id="ar-btn" disabled>Lihat di ruanganmu (AR)</button>
+            <p class="hint" id="ar-hint" hidden></p>
+          </div>
+          <div class="pane" data-pane="video">
+            <div class="ph">Placeholder video</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CARA AR -->
+    <section class="section" id="cara-ar">
+      <div class="container">
+        <h2>Cara pakai AR</h2>
+        <ol class="steps">
+          <li class="soft-card"><span class="num">1</span><div><h3>Buka di HP</h3><p>Buka halaman produk lewat HP atau scan kode QR di showroom.</p></div></li>
+          <li class="soft-card"><span class="num">2</span><div><h3>Ketuk tombol AR</h3><p>Pilih "Lihat di ruanganmu" pada tab 3D &amp; AR.</p></div></li>
+          <li class="soft-card"><span class="num">3</span><div><h3>Arahkan ke lantai</h3><p>Gerakkan kamera pelan-pelan sampai permukaan terdeteksi, lalu letakkan.</p></div></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section--alt" id="faq">
+      <div class="container narrow">
+        <h2>Pertanyaan umum</h2>
+        <details class="soft-card faq">
+          <summary>Jam buka showroom?</summary>
+          <p>Contoh: setiap hari, 09.00–17.00 WIB. (Dummy, perlu dikonfirmasi.)</p>
+        </details>
+        <details class="soft-card faq">
+          <summary>Bagaimana cara memesan?</summary>
+          <p>Hubungi kami lewat WhatsApp, sebutkan produk yang diminati.</p>
+        </details>
+        <details class="soft-card faq">
+          <summary>Apakah bisa pesan custom?</summary>
+          <p>Bisa ditanyakan lebih lanjut lewat WhatsApp.</p>
+        </details>
+        <details class="soft-card faq">
+          <summary>Apakah AR perlu aplikasi tambahan?</summary>
+          <p>Tidak. iPhone memakai AR Quick Look, Android memakai Scene Viewer.</p>
+        </details>
+        <div class="actions">
+          <a class="btn btn--wa" id="wa-faq" href="#" target="_blank" rel="noopener">Tanya lewat WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- SHOWROOM -->
+    <section class="section" id="showroom">
+      <div class="container">
+        <h2>Showroom</h2>
+        <p class="muted">Setiap hari, 09.00–17.00 WIB (dummy).</p>
+        <div class="soft-card map">
+          <iframe title="Peta showroom" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+            src="https://maps.google.com/maps?q=Surakarta&output=embed"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> FurniBLOC (halaman dummy)</p>
+      <a class="btn btn--wa" id="wa-footer" href="#" target="_blank" rel="noopener">WhatsApp</a>
+    </div>
+  </footer>
+
+  <button class="to-top" id="to-top" aria-label="Kembali ke atas" hidden>↑</button>
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
